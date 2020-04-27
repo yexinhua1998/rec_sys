@@ -4,8 +4,11 @@ CREATE TABLE page_content(
 	content TEXT,
 	keywords TEXT,
 	tags TEXT,
-	is_extracted BOOLEAN
+	is_extracted BOOLEAN,
+	docid Serial
 );
+
+CREATE INDEX docid_index ON page_content(docid);
 
 CREATE TABLE url_to_be_get(
 	url TEXT PRIMARY KEY
