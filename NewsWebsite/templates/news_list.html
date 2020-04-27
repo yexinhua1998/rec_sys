@@ -1,0 +1,34 @@
+$def with (news_list,page,jump_list)
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="news_list_wrapper">
+		$for item in news_list:
+			<div class="news_intro_item">
+				<span class="doc_id">$item['docid']</span>
+				<span class="title"><a href="/news?docid=$item['docid']">$item['title']</a></span>
+			</div>
+	</div>
+	<div id="jump_wrapper">
+		<div id="page_id_shower">您当前处在第 $page 页</div>
+		<div id="jump_shower">
+		$for jump in jump_list:
+			$if jump!=page:
+				&nbsp;<a href="/news_list?page=$jump">[ $jump ]</a>&nbsp;
+			$else:
+				&nbsp;[ $jump ]&nbsp;
+		</div>
+		<div id="input_jumper">
+			<form action="/news_list">
+				跳转到
+				<input type="number" name="page">
+				<input type="submit" value="go">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
